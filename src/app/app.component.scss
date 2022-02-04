@@ -1,0 +1,30 @@
+.title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 40px;
+  color: #E7008A;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.main-container {
+  font-family: 'Courier New', Courier, monospace;
+  padding: 20px;
+  display: flex;
+
+  .left-side {
+    float: left;
+    
+    .operator-container {
+      font-size: 25px;
+      margin-bottom: 10px;
+  
+      .operator-label {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .right-side {
+    margin-left: 200px;
+  }
+}
