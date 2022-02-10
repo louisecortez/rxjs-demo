@@ -22,22 +22,36 @@
         {{ number }}
       </div>
     </div>
+
+    <div class="operator-container">
+      <div class="operator-label">combineLatest</div>
+      <div *ngFor="let number of combineLatestData">
+        {{ number }}
+      </div>
+    </div>
+
+    <div class="operator-container">
+      <div class="operator-label">multiple operators</div>
+      <div *ngFor="let number of multipleOperatorsData">
+        {{ number }}
+      </div>
+    </div>
   </div>
 
-  <!-- <div class="right-side">
+  <div class="right-side">
     <observer-demo></observer-demo>
     <div>
-      FIRST SUBSCRIBER
+      FIRST SUBSCRIBER (greater than 20)
       <div *ngFor="let firstNum of firstSubscriber">
         {{ firstNum }}
       </div>
     </div>
     
     <div>
-      SECOND SUBSCRIBER
+      SECOND SUBSCRIBER (less than 20)
       <div *ngFor="let secondNum of secondSubscriber">
         {{ secondNum }}
       </div>
     </div>
-  </div> -->
+  </div>
 </div>

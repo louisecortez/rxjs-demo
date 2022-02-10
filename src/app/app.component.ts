@@ -21,6 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
   filterData: number[] = [];
   mapData: number[] = [];
   combineLatestData: string[] = [];
+  multipleOperatorsData: number[] = []
 
   // Observer demo
   firstSubscriber: number[] = [];
@@ -38,24 +39,33 @@ export class AppComponent implements OnInit, OnDestroy {
       this.dataSource.push(data);
     });
 
-    this.dataSource$
-      .pipe(filter(data => data >= 3))
-      .subscribe(data => {
+    // With operators
+    this.dataSource$.pipe(
+      filter(data => data >= 3)
+    ).subscribe(data => {
       this.filterData.push(data);
     });
 
-    this.dataSource$
-      .pipe(
-        map(data => data * 5)
-      ).subscribe(data => {
+    this.dataSource$.pipe(
+      map(data => data * 5)
+    ).subscribe(data => {
       this.mapData.push(data);
     });
-    
+
     combineLatest([
       this.dataSource$,
       this.dataSource2$
-    ]).subscribe(([data1, data2]) => {
-      console.log(`${data1} ${data2}`);
+    ]).pipe(
+      filter(([data1, data2]) => data1 > 3 && data2 < 9)
+    ).subscribe(([data1, data2]) => {
+      this.combineLatestData.push(data1 + ' and ' + data2);
+    });
+
+    this.dataSource$.pipe(
+      map(data => data * 10),
+      filter(data => data > 3)
+    ).subscribe(data => {
+      this.multipleOperatorsData.push(data);
     });
 
     this.dataService.currentNumber$.pipe(
